@@ -195,16 +195,6 @@ public class MyKaleidoscope implements GLEventListener {
                 gl.glLineWidth(10.0f);
                 gl.glColor3f(1.0f, 1.0f, 1.0f);
 
-                gl.glBegin(GL.GL_LINES);
-                gl.glVertex2i(0, -200);
-                gl.glVertex2i(0, 200);
-                gl.glEnd();
-
-                gl.glBegin(GL.GL_LINES);
-                gl.glVertex2i(-200, 0);
-                gl.glVertex2i(200, 0);
-                gl.glEnd();
-
                 // clear list so its different for the next viewport
                 reflectedObjects.clear();
             }
