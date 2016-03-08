@@ -10,6 +10,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -116,6 +120,7 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
                 "Left Click: create polygon vertices\n" +
                 "X: Clear the points, start over drawing\n" +
                 "Enter: finalize seed polygon\n" +
+                "W: Write to IFS file\n" +
                 "\n" +
                 "\nTo draw the fractal press any number 1 - 9" +
                 "\nTo go back to editing mode press backspace";
@@ -325,6 +330,13 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
             case KeyEvent.VK_BACK_SPACE:
                 drawingAsFractal = false;
                 break;
+
+            case KeyEvent.VK_W:
+                double[][] transfMatrices = new double[children.size()][16];
+                for(int i = 0; i < children.size(); i++) {
+                    transfMatrices[i] = children.get(i).currTransMatrix;
+                }
+                writeIfsFile(transfMatrices, (100.0 / (double) children.size()));
         }
     }
 
@@ -382,22 +394,12 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
     }
 
     public void drawByLevel(GL2 gl, int levels) {
-        Polygon currentSeed = seed;
-
         float[] levelColor = levelColors[fractalLevels - levels];
-        gl.glPushMatrix();
-        gl.glTranslated(seed.budgeX, seed.budgeY, 0);
-        gl.glTranslated(seed.centerX, seed.centerY, 0);
-        gl.glScaled(seed.scaleX, seed.scaleY, 1.0);
-        gl.glTranslated(-seed.centerX, -seed.centerY, 0);
-        gl.glTranslated(seed.centerX, seed.centerY, 0);
-        gl.glRotated(seed.rotation, 0, 0, 1.0);
-        gl.glTranslated(-seed.centerX, -seed.centerY, 0);
+
         seed.draw(gl, levelColor);
         for(Polygon p : children) {
             drawByLevel(gl, levels - 1, p);
         }
-        gl.glPopMatrix();
     }
 
     public void drawByLevel(GL2 gl, int levels, Polygon currentSeed) {
@@ -409,13 +411,15 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
         Polygon temp = Polygon.copyPolygon(currentSeed);
 
         gl.glPushMatrix();
-        gl.glTranslated(temp.budgeX, temp.budgeY, 0);
-        gl.glTranslated(temp.centerX, temp.centerY, 0);
-        gl.glScaled(temp.scaleX, temp.scaleY, 1.0);
-        gl.glTranslated(-temp.centerX, -temp.centerY, 0);
-        gl.glTranslated(temp.centerX, temp.centerY, 0);
-        gl.glRotated(temp.rotation, 0, 0, 1.0);
-        gl.glTranslated(-temp.centerX, -temp.centerY, 0);
+        if(fractalLevels - levels != 1) {
+            gl.glTranslated(temp.budgeX, temp.budgeY, 0);
+            gl.glTranslated(temp.centerX, temp.centerY, 0);
+            gl.glScaled(temp.scaleX, temp.scaleY, 1.0);
+            gl.glTranslated(-temp.centerX, -temp.centerY, 0);
+            gl.glTranslated(temp.centerX, temp.centerY, 0);
+            gl.glRotated(temp.rotation, 0, 0, 1.0);
+            gl.glTranslated(-temp.centerX, -temp.centerY, 0);
+        }
         temp.draw(gl, levelColor);
         for(Polygon p : children) {
             Polygon tempChild = Polygon.copyPolygon(p);
@@ -424,8 +428,26 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
         gl.glPopMatrix();
     }
 
-    public void writeIfsFile() {
+    public void writeIfsFile(double[][] matrix, double prob) {
+        PrintWriter out = null;
 
+        try {
+            out = new PrintWriter(new BufferedWriter(new FileWriter("my_ifs.ifs")));
+            out.println("MY_IFS" + " {");
+            for (int i = 0; i < matrix.length; i++) {
+                out.println(String.format("%f %f %f %f %f %f %f",
+                        matrix[i][0],
+                        matrix[i][1],
+                        matrix[i][4],
+                        matrix[i][5],
+                        matrix[i][12],
+                        matrix[i][13],
+                        prob));
+            }
+            out.println("}");
+            out.close();
+        }
+        catch (IOException ex) {System.err.println(ex);}
     }
 
     public HashMap<String, Double> translateMouseClick(double x, double y) {
