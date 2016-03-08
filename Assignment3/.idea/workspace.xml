@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70a65ca6-6b83-485d-bdce-3b6bb6fa8cbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Assignment2/.idea/libraries/gluegen_rt_natives_linux_amd64.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Assignment2/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Assignment2/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/gluegen_rt_natives_linux_amd64.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Assignment3.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Polygon.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignment1/out/production/GraphicsAssignment1/KShape.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignment1/out/production/GraphicsAssignment1/MyKaleidoscope.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignment1/out/production/GraphicsAssignment1/ReflectedObject$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignment1/out/production/GraphicsAssignment1/ReflectedObject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Assignment1/out/production/GraphicsAssignment1/Vertex.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment1/src/MyKaleidoscope.java" afterPath="$PROJECT_DIR$/../Assignment1/src/MyKaleidoscope.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Assignment3/Assignment3.class" afterPath="$PROJECT_DIR$/out/production/Assignment3/Assignment3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Assignment3.java" afterPath="$PROJECT_DIR$/src/Assignment3.java" />
     </list>
     <ignored path="Assignment3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +29,8 @@
       <file leaf-file-name="Assignment3.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Assignment3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7889088">
-              <caret line="384" column="41" selection-start-line="384" selection-start-column="41" selection-end-line="384" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.40250447">
+              <caret line="388" column="8" selection-start-line="388" selection-start-column="8" selection-end-line="394" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/src/Polygon.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="219" column="31" selection-start-line="219" selection-start-column="31" selection-end-line="219" selection-end-column="31" />
+              <caret line="167" column="47" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#572#573#0" expanded="true" />
@@ -522,7 +512,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39918116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39918116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -581,7 +571,7 @@
     <entry file="file://$PROJECT_DIR$/src/Polygon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="219" column="31" selection-start-line="219" selection-start-column="31" selection-end-line="219" selection-end-column="31" />
+          <caret line="167" column="47" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#572#573#0" expanded="true" />
@@ -630,8 +620,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assignment3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7889088">
-          <caret line="384" column="41" selection-start-line="384" selection-start-column="41" selection-end-line="384" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.40250447">
+          <caret line="388" column="8" selection-start-line="388" selection-start-column="8" selection-end-line="394" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

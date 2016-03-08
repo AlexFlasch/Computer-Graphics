@@ -115,7 +115,10 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
                 "\nWhile creating the seed polygon:\n" +
                 "Left Click: create polygon vertices\n" +
                 "X: Clear the points, start over drawing\n" +
-                "Enter: finalize seed polygon\n";
+                "Enter: finalize seed polygon\n" +
+                "\n" +
+                "\nTo draw the fractal press any number 1 - 9" +
+                "\nTo go back to editing mode press backspace";
 
         text.append(helpText);
         text.setEditable(false);
@@ -302,6 +305,26 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
             case KeyEvent.VK_5:
                 drawAsFractal(5);
                 break;
+
+            case KeyEvent.VK_6:
+                drawAsFractal(6);
+                break;
+
+            case KeyEvent.VK_7:
+                drawAsFractal(7);
+                break;
+
+            case KeyEvent.VK_8:
+                drawAsFractal(8);
+                break;
+
+            case KeyEvent.VK_9:
+                drawAsFractal(9);
+                break;
+
+            case KeyEvent.VK_BACK_SPACE:
+                drawingAsFractal = false;
+                break;
         }
     }
 
@@ -363,6 +386,13 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
 
         float[] levelColor = levelColors[fractalLevels - levels];
         gl.glPushMatrix();
+        gl.glTranslated(seed.budgeX, seed.budgeY, 0);
+        gl.glTranslated(seed.centerX, seed.centerY, 0);
+        gl.glScaled(seed.scaleX, seed.scaleY, 1.0);
+        gl.glTranslated(-seed.centerX, -seed.centerY, 0);
+        gl.glTranslated(seed.centerX, seed.centerY, 0);
+        gl.glRotated(seed.rotation, 0, 0, 1.0);
+        gl.glTranslated(-seed.centerX, -seed.centerY, 0);
         seed.draw(gl, levelColor);
         for(Polygon p : children) {
             drawByLevel(gl, levels - 1, p);
@@ -377,12 +407,19 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
 
         float[] levelColor = levelColors[fractalLevels - levels];
         Polygon temp = Polygon.copyPolygon(currentSeed);
-        LinkedList<Polygon> tempChildren = temp.getChildren(children);
 
         gl.glPushMatrix();
+        gl.glTranslated(temp.budgeX, temp.budgeY, 0);
+        gl.glTranslated(temp.centerX, temp.centerY, 0);
+        gl.glScaled(temp.scaleX, temp.scaleY, 1.0);
+        gl.glTranslated(-temp.centerX, -temp.centerY, 0);
+        gl.glTranslated(temp.centerX, temp.centerY, 0);
+        gl.glRotated(temp.rotation, 0, 0, 1.0);
+        gl.glTranslated(-temp.centerX, -temp.centerY, 0);
         temp.draw(gl, levelColor);
-        for(Polygon p : tempChildren) {
-            drawByLevel(gl, levels - 1, p);
+        for(Polygon p : children) {
+            Polygon tempChild = Polygon.copyPolygon(p);
+            drawByLevel(gl, levels - 1, tempChild);
         }
         gl.glPopMatrix();
     }
@@ -403,24 +440,24 @@ public class Assignment3 implements GLEventListener, MouseListener, KeyListener 
     }
 
     public void cycleNextPolygon() {
-        int currentIndex = polygons.indexOf(current);
+        int currentIndex = children.indexOf(current);
         current.setCurrent(false);
         currentIndex++;
-        if(currentIndex > polygons.size() - 1) {
+        if(currentIndex > children.size() - 1) {
             currentIndex = 0;
         }
-        current = polygons.get(currentIndex);
+        current = children.get(currentIndex);
         current.setCurrent(true);
     }
 
     public void cyclePrevPolygon() {
-        int currentIndex = polygons.indexOf(current);
+        int currentIndex = children.indexOf(current);
         current.setCurrent(false);
         currentIndex--;
         if(currentIndex < 0) {
-            currentIndex = polygons.size() - 1;
+            currentIndex = children.size() - 1;
         }
-        current = polygons.get(currentIndex);
+        current = children.get(currentIndex);
         current.setCurrent(true);
     }
 
